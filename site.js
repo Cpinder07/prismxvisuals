@@ -99,6 +99,25 @@ if (compare) {
   window.addEventListener("resize", onScroll);
 }
 
+(function () {
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const nativeMotion = window.CSS && CSS.supports && CSS.supports("view-transition-name", "none");
+  if (reduced || nativeMotion) return;
+  document.addEventListener("click", (event) => {
+    if (event.defaultPrevented || event.button !== 0) return;
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const link = event.target.closest("a");
+    if (!link || link.target || link.hasAttribute("download")) return;
+    let url;
+    try { url = new URL(link.href, location.href); } catch (error) { return; }
+    if (url.origin !== location.origin) return;
+    if (url.pathname === location.pathname && url.search === location.search) return;
+    event.preventDefault();
+    document.body.classList.add("page-leave");
+    window.setTimeout(() => { location.href = link.href; }, 280);
+  });
+})();
+
 const toggle = document.querySelector(".nav-toggle");
 if (toggle) {
   toggle.addEventListener("click", () => {

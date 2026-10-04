@@ -218,6 +218,7 @@ function bindCheckout() {
       document.getElementById("manualMethod").textContent = name;
       document.getElementById("manualCopy").textContent = name + " is not charged on this page. Join Discord support and someone will finish the order with you.";
       alert.hidden = false;
+      window.requestAnimationFrame(() => alert.classList.add("show"));
       document.getElementById("joinDiscord").focus();
       return;
     }
@@ -257,7 +258,10 @@ function bindCheckout() {
   });
   const manualAlert = document.getElementById("manualAlert");
   function closeManual() {
-    manualAlert.hidden = true;
+    manualAlert.classList.remove("show");
+    window.setTimeout(() => {
+      if (!manualAlert.classList.contains("show")) manualAlert.hidden = true;
+    }, 420);
     payButton.focus();
   }
   document.getElementById("changeMethod").addEventListener("click", closeManual);
@@ -265,7 +269,7 @@ function bindCheckout() {
     if (event.target === manualAlert) closeManual();
   });
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !manualAlert.hidden) closeManual();
+    if (event.key === "Escape" && manualAlert.classList.contains("show")) closeManual();
   });
 }
 
