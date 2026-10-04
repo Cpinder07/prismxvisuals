@@ -1,8 +1,8 @@
 const stories = [
-  { before: "media/lotus-before.jpg", after: "media/lotus-after.jpg" },
-  { before: "media/night-before.jpg", after: "media/night-after.jpg" },
-  { before: "media/fortnite-before.jpg", after: "media/fortnite-after.jpg" },
-  { before: "media/coast-before.jpg", after: "media/coast-after.jpg" }
+  { before: "media/lotus-before.jpg?v=2", after: "media/lotus-after.jpg?v=2" },
+  { before: "media/night-before.jpg?v=2", after: "media/night-after.jpg?v=2" },
+  { before: "media/fortnite-before.jpg?v=2", after: "media/fortnite-after.jpg?v=2" },
+  { before: "media/coast-before.jpg?v=2", after: "media/coast-after.jpg?v=2" }
 ];
 
 const compare = document.querySelector("[data-compare]");
