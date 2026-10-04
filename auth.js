@@ -18,7 +18,7 @@ function publicSite() {
 
 function apiBase() {
   if (!publicSite()) return "";
-  return "https://seen-advertiser-hypothesis-retired.trycloudflare.com";
+  return "https://constitutional-jane-tiffany-shower.trycloudflare.com";
 }
 
 function safeNext() {
