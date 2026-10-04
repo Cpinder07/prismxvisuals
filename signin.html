@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign in — Prismx</title>
+  <link rel="icon" href="logo.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="index.html">
+      <img src="logo.png" alt="" />
+      <span>Prismx</span>
+    </a>
+    <nav class="nav-links" aria-label="Page">
+      <a href="index.html#looks">Looks</a>
+      <a href="index.html#product">Product</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a class="nav-signin" id="navSignIn" href="signin.html" aria-current="page">Sign in</a>
+      <a class="nav-cta" id="navSignUp" href="signup.html">Sign up</a>
+    </nav>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <main class="account">
+    <section class="account-card reveal">
+      <img class="account-mark" src="logo.png" alt="" />
+      <h1>Sign in</h1>
+      <p class="lede">Username and password. Email is asked at checkout.</p>
+      <form id="signInForm">
+        <label>Username<input type="text" name="username" autocomplete="username" required minlength="3" maxlength="20" placeholder="Username" /></label>
+        <label>Password<input type="password" name="password" autocomplete="current-password" required minlength="8" placeholder="Password" /></label>
+        <label class="check"><input type="checkbox" name="remember" /> Remember me</label>
+        <button class="btn primary" type="submit">Sign in</button>
+        <p class="form-note" id="formNote" role="status"></p>
+      </form>
+      <p class="swap">New here? <a id="goSignUp" href="signup.html">Sign up</a></p>
+    </section>
+  </main>
+  <script src="site.js"></script>
+  <script src="auth.js"></script>
+</body>
+</html>

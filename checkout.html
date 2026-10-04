@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout — Prismx</title>
+  <link rel="icon" href="logo.png" />
+  <link rel="stylesheet" href="styles.css?v=7" />
+</head>
+<body class="checkout-body">
+  <div class="checkout">
+    <aside class="order">
+      <div class="order-top">
+        <a class="order-brand" href="index.html">
+          <img src="logo.png" alt="" />
+          <span><strong>PRISMX</strong><small>Secure checkout</small></span>
+        </a>
+        <span class="lang">EN</span>
+      </div>
+      <p class="order-kicker">Your order</p>
+      <p class="order-price" data-plan="price">$20</p>
+      <p class="order-count" data-plan="term">Lifetime</p>
+      <div class="order-item">
+        <img src="logo.png" alt="" />
+        <strong data-plan="title">PRISMX LIFETIME KEY</strong>
+        <span data-plan="price">$20</span>
+      </div>
+      <div class="order-line"><span>Items</span><span data-plan="price">$20</span></div>
+      <div class="order-line total"><span>Total</span><span data-plan="price">$20</span></div>
+      <div class="order-help">
+        <p>Question about payment?</p>
+        <a class="support" href="account.html">Contact support</a>
+      </div>
+    </aside>
+
+    <main class="pay">
+      <ol class="steps">
+        <li class="on"><span>01</span> Order Information</li>
+        <li><span>02</span> Confirmation &amp; Payment</li>
+        <li><span>03</span> Delivery</li>
+      </ol>
+
+      <form id="checkoutForm" class="pay-form">
+        <section class="pay-block">
+          <header>
+            <span>01</span>
+            <div>
+              <h2>Contact Details</h2>
+              <p>We use them for support and to save the order on your account.</p>
+            </div>
+          </header>
+          <div class="pay-grid">
+            <label>E-mail<input id="email" type="email" name="email" autocomplete="email" required placeholder="you@example.com" /></label>
+            <label>Contact<input id="contactName" type="text" name="contact" autocomplete="username" maxlength="20" /></label>
+          </div>
+        </section>
+
+        <section class="pay-block">
+          <header>
+            <span>02</span>
+            <div>
+              <h2>Promo Code</h2>
+              <p>Use a discount code if you have one.</p>
+            </div>
+          </header>
+          <div class="promo">
+            <input id="promoCode" type="text" autocomplete="off" placeholder="Enter promo code" />
+            <button id="promoApply" type="button">Apply</button>
+          </div>
+          <p class="form-note" id="promoNote" role="status"></p>
+        </section>
+
+        <section class="pay-block">
+          <header>
+            <span>03</span>
+            <div>
+              <h2>Payment Method</h2>
+              <p>Select a payment method, accept the terms, then continue with the button below.</p>
+            </div>
+          </header>
+          <div class="methods" role="radiogroup" aria-label="Payment method">
+            <label class="method on" data-method="Stripe">
+              <input type="radio" name="method" value="Stripe" checked />
+              <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="8" width="24" height="16" rx="4" fill="#635bff"/><path d="M13 16.5c0-1.2.9-1.7 2.4-1.7 1.6 0 3.2.5 3.2.5v-2s-1.5-.6-3.1-.6c-2.6 0-4.3 1.4-4.3 3.6 0 3.5 4.8 2.9 4.8 4.4 0 .6-.5 1.1-1.6 1.1-1.4 0-3.2-.8-3.2-.8v2.1s1.6.7 3.4.7c2.7 0 4.4-1.3 4.4-3.6 0-3.8-4.9-3.1-4.9-4.7z" fill="#fff"/></svg>
+              Stripe
+            </label>
+            <label class="method" data-method="PayPal">
+              <input type="radio" name="method" value="PayPal" />
+              <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12" fill="#003087"/><path d="M18.2 10h-4.2c-.3 0-.5.2-.6.5l-1.6 10c0 .2.1.4.3.4h1.8l.5-2.8c0-.2.2-.4.5-.4h1.1c2.4 0 3.8-1.2 4.2-3.5.2-1 .1-1.8-.4-2.4-.5-.7-1.5-1-2.6-1zm.3 3.4c-.2 1.3-1.2 1.3-2.1 1.3h-.5l.4-2.3h.5c.7 0 1.4 0 1.7.4.2.3.2.5 0 .6z" fill="#fff"/><path d="M12.4 20.2l.4-2.2c0-.2.2-.3.4-.3h1.4c2.2 0 3.5-1.1 3.8-3.1.1-.5.1-.9 0-1.2-.6 1.5-2 2.2-3.8 2.2h-.8l-.6 3.6c0 .2-.2.4-.4.4h-1.4c-.2 0-.3-.2-.2-.4z" fill="#009cde"/></svg>
+              PayPal
+            </label>
+            <label class="method" data-method="Cash App">
+              <input type="radio" name="method" value="Cash App" />
+              <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="4" width="24" height="24" rx="7" fill="#00d632"/><path d="M17.6 15.2c0-1.5-1-2-2.6-2.2l-.5-.1c-.7-.1-.9-.3-.9-.6s.3-.5.9-.5h2.2V10h-1.8V8.6h-1.6V10h-.4c-1.5 0-2.5.8-2.5 2 0 1.4.9 2 2.4 2.2l.6.1c.7.1 1 .3 1 .6s-.4.6-1.1.6h-2.4v1.8h2v1.4h1.6v-1.4h.3c1.7 0 2.7-.9 2.7-2.1z" fill="#fff"/></svg>
+              Cash App
+            </label>
+            <label class="method" data-method="Crypto">
+              <input type="radio" name="method" value="Crypto" />
+              <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4l8 4.6v9.2L16 28l-8-10.2V8.6L16 4z" fill="#26a17b"/><path d="M16.8 14.2V12h2.2v-1.4h-2.2V9.2h-1.6v1.4H13v1.4h4.6c.5 0 .8.2.8.6s-.3.6-.9.6h-3.2v1.4h2.1c1.5 0 2.4-.7 2.4-1.8 0-.3 0-.6-.2-.8.4-.2.6-.6.6-1.2 0-.9-.7-1.6-2.4-1.6H13V9.2h2.2z" fill="#fff"/></svg>
+              Crypto
+            </label>
+          </div>
+          <label class="agree"><input id="acceptTerms" type="checkbox" /> I accept the terms and agree to receive the key right after payment.</label>
+          <label class="agree"><input id="acceptNews" type="checkbox" /> I agree to receive updates, news, and offers from Prismx.</label>
+          <p class="form-note" id="formNote" role="status"></p>
+          <div class="pay-actions">
+            <button class="pay-go" id="payButton" type="submit">Continue with Stripe</button>
+            <a class="pay-back" href="index.html#pricing">Back to Cart</a>
+          </div>
+        </section>
+      </form>
+
+      <section class="delivery" id="deliveryPanel" hidden>
+        <header>
+          <span>03</span>
+          <div>
+            <h2>Your key is ready</h2>
+            <p>Payment is recorded on this account. Paste the key into Prismx.</p>
+          </div>
+        </header>
+        <p class="order-no" id="customerBox" hidden></p>
+        <p class="order-no" id="orderBox" hidden></p>
+        <div class="key-box" id="keyWrap" hidden>
+          <span id="keyBox"></span>
+          <button type="button" class="eye" id="keyEye" aria-label="Show key"><svg class="open-eye" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 5c5.5 0 9.5 4.2 11 7-1.5 2.8-5.5 7-11 7S2.5 14.8 1 12C2.5 9.2 6.5 5 12 5zm0 2C8.2 7 5 9.8 3.6 12 5 14.2 8.2 17 12 17s7-2.8 8.4-5C19 9.8 15.8 7 12 7zm0 2.2a2.8 2.8 0 1 1 0 5.6 2.8 2.8 0 0 1 0-5.6z"/></svg><svg class="shut" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3.3 4.7 4.7 3.3 20.7 19.3 19.3 20.7 16.2 17.6A12 12 0 0 1 12 19C6.5 19 2.5 14.8 1 12a13 13 0 0 1 4.1-4.7L3.3 4.7zM8.1 9.5A2.8 2.8 0 0 0 9.4 14.6l-1.5 1.5A11 11 0 0 1 3.6 12C5 9.8 8.1 7.2 12 7c.7 0 1.4.1 2 .3L12.4 9a2.8 2.8 0 0 0-4.3.5zM12 7.1l-.2 1.5c3.2.5 5.6 2.4 6.8 3.4-.4.5-.9 1-1.5 1.5l1.4 1.4A13 13 0 0 0 23 12c-1.5-2.8-5.5-7-11-7z"/></svg></button>
+        </div>
+        <div class="pay-actions">
+          <a class="pay-go" href="account.html">View account</a>
+          <a class="pay-back" href="index.html#pricing">Back to Cart</a>
+        </div>
+      </section>
+    </main>
+  </div>
+  <div class="manual" id="manualAlert" hidden>
+    <div class="manual-card" role="alertdialog" aria-modal="true" aria-labelledby="manualTitle" aria-describedby="manualCopy">
+      <p class="manual-kicker" id="manualMethod">PayPal</p>
+      <h2 id="manualTitle">This payment is done manually.</h2>
+      <p id="manualCopy">This method is not charged on this page. Join Discord support and someone will finish the order with you.</p>
+      <div class="manual-actions">
+        <a class="pay-go" id="joinDiscord" href="https://discord.gg/NBnqkH2PTA">Join Discord</a>
+        <button type="button" class="pay-back" id="changeMethod">Change method</button>
+      </div>
+    </div>
+  </div>
+  <script src="site.js"></script>
+  <script src="auth.js?v=8"></script>
+</body>
+</html>
