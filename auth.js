@@ -16,6 +16,11 @@ function publicSite() {
   return host === "prismxvisuals.com" || host === "www.prismxvisuals.com" || host.endsWith(".github.io");
 }
 
+function apiBase() {
+  if (!publicSite()) return "";
+  return "https://seen-advertiser-hypothesis-retired.trycloudflare.com";
+}
+
 function safeNext() {
   const next = new URLSearchParams(location.search).get("next") || "";
   if (/^(index\.html|checkout\.html|account\.html)(\?[A-Za-z0-9=&%._-]*)?$/.test(next)) return next;
@@ -33,7 +38,7 @@ async function accountCall(path, payload) {
     options.body = JSON.stringify(payload);
   }
   try {
-    const response = await fetch(path, options);
+    const response = await fetch(apiBase() + path, options);
     const body = await response.json();
     if (response.status === 401) {
       writeToken("", false);
@@ -78,10 +83,6 @@ function bindSignIn() {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     const note = document.getElementById("formNote");
-    if (publicSite()) {
-      setNote(note, "Accounts open inside the Prismx app. For a key, use Discord support.", true);
-      return;
-    }
     setNote(note, "Signing in");
     const data = new FormData(form);
     const result = await accountCall("/api/signin", {
@@ -107,10 +108,6 @@ function bindSignUp() {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     const note = document.getElementById("formNote");
-    if (publicSite()) {
-      setNote(note, "Accounts open inside the Prismx app. For a key, use Discord support.", true);
-      return;
-    }
     const data = new FormData(form);
     if (data.get("password") !== data.get("confirm")) {
       setNote(note, "Those passwords do not match.", true);
@@ -204,10 +201,6 @@ function bindCheckout() {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     const note = document.getElementById("formNote");
-    if (publicSite()) {
-      setNote(note, "Accounts open inside the Prismx app. For a key, use Discord support.", true);
-      return;
-    }
     if (!document.getElementById("acceptTerms").checked) {
       setNote(note, "Accept the terms to continue.", true);
       return;
