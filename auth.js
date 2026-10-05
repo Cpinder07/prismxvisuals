@@ -18,7 +18,7 @@ function publicSite() {
 
 function apiBase() {
   if (!publicSite()) return "";
-  return "http://24.144.112.191";
+  return "https://24.144.112.191.sslip.io";
 }
 
 function safeNext() {
