@@ -18,7 +18,7 @@ function publicSite() {
 
 function apiBase() {
   if (!publicSite()) return "";
-  return "https://constitutional-jane-tiffany-shower.trycloudflare.com";
+  return "http://24.144.112.191";
 }
 
 function safeNext() {
