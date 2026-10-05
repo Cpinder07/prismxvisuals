@@ -164,9 +164,23 @@ function bindCheckout() {
       );
     });
   });
-  document.getElementById("promoApply").addEventListener("click", () => {
+  let appliedPromo = "";
+  document.getElementById("promoApply").addEventListener("click", async () => {
     const code = document.getElementById("promoCode").value.trim();
-    setNote(document.getElementById("promoNote"), code ? "That code is not active." : "Enter a promo code.", true);
+    const note = document.getElementById("promoNote");
+    if (!code) {
+      appliedPromo = "";
+      setNote(note, "Enter a promo code.", true);
+      return;
+    }
+    const result = await accountCall("/api/promo", { code, plan });
+    if (!result.ok) {
+      appliedPromo = "";
+      setNote(note, result.message || "That code is not active.", true);
+      return;
+    }
+    appliedPromo = code;
+    setNote(note, result.message || "Code applied.");
   });
   const stripeSession = params.get("session_id");
   accountCall("/api/session").then(async (session) => {
@@ -222,9 +236,14 @@ function bindCheckout() {
         email: new FormData(form).get("email"),
         plan,
         method: "Stripe",
+        promo: appliedPromo,
       });
       if (result.signedIn === false) {
         location.replace("signin.html?next=" + encodeURIComponent(next));
+        return;
+      }
+      if (result.ok && result.key) {
+        showDelivery(result.key, result.message || "Paste this key into Prismx.", result.order, result.customerNumber);
         return;
       }
       if (!result.ok || !result.url) {
