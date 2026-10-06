@@ -130,15 +130,17 @@ if (toggle) {
 (function () {
   const stage = document.querySelector("[data-tilt]");
   if (!stage) return;
+  const scene = stage.querySelector(".panel-tilt-scene") || stage.querySelector(".panel-tilt-card");
   const card = stage.querySelector(".panel-tilt-card");
-  if (!card) return;
+  if (!scene || !card) return;
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const mobile = () => window.innerWidth <= 980;
 
   function reset() {
-    card.style.transform = "rotateX(0deg) rotateY(0deg) translateZ(0)";
-    card.style.setProperty("--shine-x", "50%");
-    card.style.setProperty("--shine-y", "40%");
+    scene.style.transform = "rotateX(0deg) rotateY(0deg) translateZ(0)";
+    card.style.setProperty("--shine-x", "48%");
+    card.style.setProperty("--shine-y", "36%");
+    card.style.setProperty("--shine-boost", "0");
   }
 
   if (reduced) {
@@ -154,16 +156,18 @@ if (toggle) {
     const rect = stage.getBoundingClientRect();
     const x = (event.clientX - rect.left) / rect.width;
     const y = (event.clientY - rect.top) / rect.height;
-    const rotateY = (x - 0.5) * 20;
+    const rotateY = (x - 0.5) * 22;
     const rotateX = (0.5 - y) * 16;
-    card.style.transform =
-      "rotateX(" + rotateX.toFixed(2) + "deg) rotateY(" + rotateY.toFixed(2) + "deg) translateZ(22px)";
+    scene.style.transform =
+      "rotateX(" + rotateX.toFixed(2) + "deg) rotateY(" + rotateY.toFixed(2) + "deg) translateZ(20px)";
     card.style.setProperty("--shine-x", (x * 100).toFixed(1) + "%");
     card.style.setProperty("--shine-y", (y * 100).toFixed(1) + "%");
+    card.style.setProperty("--shine-boost", "1");
   });
   stage.addEventListener("pointerleave", reset);
   window.addEventListener("resize", () => {
     if (mobile()) reset();
   });
+  reset();
 })();
 

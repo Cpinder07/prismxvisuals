@@ -7,7 +7,7 @@
   <title>Prismx — Color for the games you play</title>
   <meta name="description" content="Prismx changes color, contrast, and night visibility on one monitor. The color is not injected." />
   <link rel="icon" href="logo.png" />
-  <link rel="stylesheet" href="styles.css?v=10" />
+  <link rel="stylesheet" href="styles.css?v=12" />
 </head>
 <body>
   <header class="nav">
@@ -122,14 +122,30 @@
       </div>
       <div class="panel-tilt reveal" data-tilt>
         <div class="panel-tilt-glow" aria-hidden="true"></div>
-        <div class="panel-tilt-card">
-          <img
-            class="panel-tilt-shot"
-            src="media/app-ui.png?v=26"
-            alt="The official Prismx panel"
-            draggable="false"
-          />
-          <span class="panel-tilt-shine" aria-hidden="true"></span>
+        <div class="panel-tilt-scene">
+          <div class="panel-tilt-card">
+            <img
+              class="panel-tilt-shot"
+              src="media/app-ui.png?v=26"
+              alt="The official Prismx panel"
+              draggable="false"
+            />
+            <span class="panel-tilt-shine" aria-hidden="true"></span>
+          </div>
+          <ul class="panel-notes" aria-label="Panel callouts">
+            <li class="panel-note" style="--nx: -2%; --ny: 38%;">
+              <strong>Precise</strong>
+              <span>Color and tone selected for your monitor.</span>
+            </li>
+            <li class="panel-note" style="--nx: 102%; --ny: 36%;">
+              <strong>1 click</strong>
+              <span>Apply any profile instantly.</span>
+            </li>
+            <li class="panel-note live" style="--nx: 86%; --ny: 90%;">
+              <strong>Live preview</strong>
+              <span>See every change in real time.</span>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
@@ -221,7 +237,7 @@
     <p><a href="https://discord.gg/NBnqkH2PTA">Discord support</a></p>
     <small>© 2026 Prismx</small>
   </footer>
-  <script src="site.js?v=10"></script>
+  <script src="site.js?v=12"></script>
   <script src="auth.js?v=14"></script>
 </body>
 </html>
