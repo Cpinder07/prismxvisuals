@@ -175,6 +175,59 @@ p { margin: 0; }
 }
 .chapters button.on { color: white; border-top-color: var(--purple); }
 
+.panel-stage {
+  padding: 40px 6vw 110px;
+  display: grid;
+  justify-items: center;
+  gap: 36px;
+}
+.panel-stage .section-head {
+  margin: 0 auto 0;
+  text-align: center;
+}
+.panel-tilt {
+  position: relative;
+  width: min(920px, 100%);
+  perspective: 1200px;
+  padding: 28px 12px 8px;
+}
+.panel-tilt-glow {
+  position: absolute;
+  inset: 8% 12% 18%;
+  background: radial-gradient(ellipse at center, rgba(139, 108, 255, 0.28), transparent 68%);
+  filter: blur(18px);
+  pointer-events: none;
+  z-index: 0;
+}
+.panel-tilt-card {
+  position: relative;
+  z-index: 1;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #0c0d14;
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.18s ease-out, box-shadow 0.3s var(--ease);
+}
+.panel-tilt:hover .panel-tilt-card {
+  box-shadow:
+    0 36px 90px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(183, 166, 255, 0.12) inset;
+}
+.panel-tilt-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #07080d;
+  pointer-events: none;
+}
+
 .product, .pricing { padding: 110px 6vw; }
 .section-head { max-width: 680px; margin-bottom: 36px; }
 .pricing .section-head { margin-left: auto; margin-right: auto; text-align: center; }
@@ -484,6 +537,9 @@ input:focus { outline: 2px solid rgba(139, 108, 255, 0.7); }
   .chapters { position: relative; left: auto; right: auto; bottom: auto; margin-top: 8px; grid-template-columns: repeat(2, 1fr); }
   .cards, .plans { grid-template-columns: 1fr; }
   .plan.featured { transform: none; }
+  .panel-stage { padding-top: 24px; }
+  .panel-tilt { perspective: none; padding: 8px 0; }
+  .panel-tilt-card { transform: none !important; }
   footer { flex-direction: column; align-items: flex-start; }
   .checkout { grid-template-columns: 1fr; padding: 12px; }
   .order { min-height: 0; }
@@ -539,4 +595,5 @@ body.page-leave { animation: page-out 0.34s var(--ease) both; }
   ::view-transition-old(root),
   ::view-transition-new(root) { animation: none; }
   .manual, .manual-card { transition: none; }
+  .panel-tilt-card { transition: none; transform: none !important; }
 }
