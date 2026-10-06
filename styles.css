@@ -218,14 +218,27 @@ p { margin: 0; }
     0 36px 90px rgba(0, 0, 0, 0.55),
     0 0 0 1px rgba(183, 166, 255, 0.12) inset;
 }
-.panel-tilt-video {
+.panel-tilt-shot {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
   background: #07080d;
   pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.panel-tilt-shine {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(
+    420px 280px at var(--shine-x, 50%) var(--shine-y, 40%),
+    rgba(255, 255, 255, 0.16),
+    transparent 55%
+  );
+  mix-blend-mode: soft-light;
+  opacity: 0.85;
 }
 
 .product, .pricing { padding: 110px 6vw; }

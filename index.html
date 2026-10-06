@@ -7,7 +7,7 @@
   <title>Prismx — Color for the games you play</title>
   <meta name="description" content="Prismx changes color, contrast, and night visibility on one monitor. The color is not injected." />
   <link rel="icon" href="logo.png" />
-  <link rel="stylesheet" href="styles.css?v=9" />
+  <link rel="stylesheet" href="styles.css?v=10" />
 </head>
 <body>
   <header class="nav">
@@ -118,22 +118,18 @@
       <div class="section-head reveal">
         <p class="kicker">The panel</p>
         <h2>Move around the official window.</h2>
-        <p>A live look at Prismx. Drag your mouse over it and the panel tilts with you.</p>
+        <p>The real Prismx panel. Move your mouse over it and it tilts with you.</p>
       </div>
       <div class="panel-tilt reveal" data-tilt>
         <div class="panel-tilt-glow" aria-hidden="true"></div>
         <div class="panel-tilt-card">
-          <video
-            class="panel-tilt-video"
-            src="media/panel-demo.mp4"
-            poster="media/panel-demo-poster.jpg"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="metadata"
-            aria-label="Prismx panel demo"
-          ></video>
+          <img
+            class="panel-tilt-shot"
+            src="media/app-ui.png?v=26"
+            alt="The official Prismx panel"
+            draggable="false"
+          />
+          <span class="panel-tilt-shine" aria-hidden="true"></span>
         </div>
       </div>
     </section>
@@ -225,7 +221,7 @@
     <p><a href="https://discord.gg/NBnqkH2PTA">Discord support</a></p>
     <small>© 2026 Prismx</small>
   </footer>
-  <script src="site.js?v=9"></script>
+  <script src="site.js?v=10"></script>
   <script src="auth.js?v=14"></script>
 </body>
 </html>

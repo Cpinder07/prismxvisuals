@@ -131,21 +131,14 @@ if (toggle) {
   const stage = document.querySelector("[data-tilt]");
   if (!stage) return;
   const card = stage.querySelector(".panel-tilt-card");
-  const video = stage.querySelector("video");
   if (!card) return;
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const mobile = () => window.innerWidth <= 980;
 
   function reset() {
     card.style.transform = "rotateX(0deg) rotateY(0deg) translateZ(0)";
-  }
-
-  if (video) {
-    const play = () => { video.play().catch(() => {}); };
-    play();
-    document.addEventListener("visibilitychange", () => {
-      if (document.visibilityState === "visible") play();
-    });
+    card.style.setProperty("--shine-x", "50%");
+    card.style.setProperty("--shine-y", "40%");
   }
 
   if (reduced) {
@@ -161,10 +154,12 @@ if (toggle) {
     const rect = stage.getBoundingClientRect();
     const x = (event.clientX - rect.left) / rect.width;
     const y = (event.clientY - rect.top) / rect.height;
-    const rotateY = (x - 0.5) * 18;
-    const rotateX = (0.5 - y) * 14;
+    const rotateY = (x - 0.5) * 20;
+    const rotateX = (0.5 - y) * 16;
     card.style.transform =
-      "rotateX(" + rotateX.toFixed(2) + "deg) rotateY(" + rotateY.toFixed(2) + "deg) translateZ(18px)";
+      "rotateX(" + rotateX.toFixed(2) + "deg) rotateY(" + rotateY.toFixed(2) + "deg) translateZ(22px)";
+    card.style.setProperty("--shine-x", (x * 100).toFixed(1) + "%");
+    card.style.setProperty("--shine-y", (y * 100).toFixed(1) + "%");
   });
   stage.addEventListener("pointerleave", reset);
   window.addEventListener("resize", () => {
